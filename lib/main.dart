@@ -54,14 +54,15 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Color(0xffFEF2E4),
       appBar: AppBar(
-        backgroundColor: Color(0xffC60000),
+        backgroundColor: Color(0xff46211A),
         title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [Text('Weather App'), Text('Task 2')]),
       ),
-      body: Column(children: [
+      body:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
-          height: MediaQuery.of(context).size.height / 3,
+          height: MediaQuery.of(context).size.height / 2,
           width: MediaQuery.of(context).size.width,
           margin: EdgeInsets.all(5),
           decoration: BoxDecoration(
@@ -75,7 +76,7 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: EdgeInsets.only(bottom: 10.0),
                 child: Text(
-                  'Currently in Uyo',
+                  'City: Uyo',
                   style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 14.0,
@@ -103,43 +104,55 @@ class _HomeState extends State<Home> {
           ),
         ),
         Expanded(
-            child: Container(
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: ListView(
-              children: <Widget>[
-                ListTile(
+            child: Padding(
+          padding: EdgeInsets.all(10),
+          child: ListView(
+            itemExtent: 70.0,
+            shrinkWrap: true,
+            children: <Widget>[
+              Card(
+                child: ListTile(
                   tileColor: Color(0xff805A3B),
+                  dense: true,
                   leading: FaIcon(FontAwesomeIcons.thermometer),
                   title: Text('Temperature'),
                   trailing: Text(
                     temp != null ? temp.toString() + '\u00B0' : 'Loading ...',
                   ),
                 ),
-                ListTile(
+              ),
+              Card(
+                child: ListTile(
                   tileColor: Color(0xff805A3B),
+                  dense: true,
                   leading: FaIcon(FontAwesomeIcons.cloud),
                   title: Text('Weather'),
                   trailing: Text(description != null
                       ? description.toString()
                       : 'Loading...'),
                 ),
-                ListTile(
+              ),
+              Card(
+                child: ListTile(
                   tileColor: Color(0xff805A3B),
+                  dense: true,
                   leading: FaIcon(FontAwesomeIcons.sun),
                   title: Text('Humidity'),
                   trailing: Text(
                       humidity != null ? humidity.toString() : 'Loading...'),
                 ),
-                ListTile(
+              ),
+              Card(
+                child: ListTile(
                   tileColor: Color(0xff805A3B),
+                  dense: true,
                   leading: FaIcon(FontAwesomeIcons.wind),
                   title: Text('Wind Speed'),
                   trailing: Text(
                       windSpeed != null ? humidity.toString() : 'Loading...'),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ))
       ]),
